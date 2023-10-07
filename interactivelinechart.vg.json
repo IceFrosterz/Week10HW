@@ -33,6 +33,7 @@
       },
       "color": {
         "field": "team",
+        "title": "Team",
         "type": "ordinal",
         "scale": {
           "domain": [
