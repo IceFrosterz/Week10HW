@@ -4,7 +4,7 @@
     "width": 800,
     "height": 300,
     "title": "F1 Team Rankings from 2017 to 2022",
-    "data": {"url": "/data.json"},
+    "data": {"url": "https://raw.githubusercontent.com/IceFrosterz/Week10HW/main/data.json"},
     "params": [
       {
         "name": "teamFilter",
