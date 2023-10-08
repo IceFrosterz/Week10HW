@@ -1,85 +1,95 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "F1 Team Rankings over Time",
-    "width": 800,
-    "height": 300,
-    "title": "F1 Team Rankings from 2017 to 2022",
-    "data": {"url": "https://raw.githubusercontent.com/IceFrosterz/Week10HW/main/data.json"},
-    "params": [
-      {
-        "name": "teamFilter",
-        "select": {"type": "point", "fields": ["team"]}, 
-        "bind": "legend"
-      }
-    ],
-    "encoding": {
-      "x": {
-        "field": "year",
-        "type": "quantitative",
-        "scale": {"domain": [2016.8, 2022.2]},
-        "axis": {
-          "title": "Year",
-          "format": "d"
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "F1 Team Rankings over Time",
+  "width": 800,
+  "height": 300,
+  "title": "F1 Team Rankings from 2017 to 2022",
+  "data": {
+    "url": "https://raw.githubusercontent.com/IceFrosterz/Week10HW/main/data.json"
+  },
+  "params": [
+    {
+      "name": "teamFilter",
+      "select": {
+        "type": "point",
+        "fields": ["team"]
       },
-      "y": {
-        "field": "ranking",
-        "type": "ordinal",
-        "axis": {
-          "title": "Ranking",
-          "orient": "left",
-          "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        }
-      },
-      "color": {
-        "field": "team",
-        "title": "Team",
-        "type": "ordinal",
-        "scale": {
-          "domain": [
-            "Mercedes",
-            "Ferrari",
-            "Red Bull",
-            "Renault / Alpine",
-            "McLaren",
-            "Alfa Romeo Sauber",
-            "Force India / Racing Point / Aston Martin",
-            "Haas",
-            "Toro Rosso / AlphaTauri",
-            "Williams"
-          ],
-          "range": [
-            "#00A19B",
-            "#FF495C",
-            "#003773",
-            "#d4af37",
-            "#FFD100",
-            "#9B0000",
-            "#F596C8",
-            "#828282",
-            "#4696EC",
-            "#0052A5"
-          ]
-        }
-      },
-      "opacity": {
-        "condition": {"param": "teamFilter", "value": 1},
-        "value": 0.2
+      "bind": "legend"
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFont": "Helvetica"
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {"domain": [2016.8, 2022.2]},
+      "axis": {
+        "title": "Year",
+        "format": "d"
       }
     },
-    "layer": [
-      {
-        "mark": {"type": "line", "size": 5},
-        "encoding": {
-          "detail": {"field": "team"},
-          "order": {"field": "year", "type": "quantitative"},
-          "tooltip": [
-            {"field": "team", "type": "nominal", "title": "Team"},
-            {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
-            {"field": "ranking", "type": "ordinal", "title": "Ranking"}
-          ]
-        }
+    "y": {
+      "field": "ranking",
+      "type": "ordinal",
+      "axis": {
+        "title": "Team",
+        "orient": "left",
+        "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "labelFont": "Helvetica"
       }
+    },
+    "color": {
+      "field": "team",
+      "type": "ordinal",
+      "title": "Team",
+      "scale": {
+        "domain": [
+          "Mercedes",
+          "Ferrari",
+          "Red Bull",
+          "Renault / Alpine",
+          "McLaren",
+          "Alfa Romeo Sauber",
+          "Force India / Racing Point / Aston Martin",
+          "Haas",
+          "Toro Rosso / AlphaTauri",
+          "Williams"
+        ],
+        "range": [
+          "#00A19B",
+          "#FF495C",
+          "#003773",
+          "#d4af37",
+          "#FFD100",
+          "#9B0000",
+          "#F596C8",
+          "#828282",
+          "#4696EC",
+          "#0052A5"
+        ]
+      }
+    },
+    "opacity": {
+      "condition": {"param": "teamFilter", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "team", "type": "nominal", "title": "Team"},
+      {"field": "year", "type": "quantitative", "title": "Year"},
+      {"field": "ranking", "type": "ordinal", "title": "Ranking"}
     ]
-  }
-  
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "size": 5},
+      "encoding": {
+        "detail": {"field": "team"},
+        "order": {"field": "year", "type": "quantitative"}
+      }
+    }
+  ]
+}
